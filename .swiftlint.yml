@@ -18,6 +18,7 @@ disabled_rules: # Rule identifiers to exclude from running
   - closure_parameter_position
   - redundant_string_enum_value
   - vertical_parameter_alignment
+  - opening_brace
 
 excluded: # paths to ignore during linting. overridden by `included`.
   - Carthage
