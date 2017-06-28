@@ -99,14 +99,17 @@ To help you out with the rules described here, a [configuration file](https://gi
 **Preferred:**
 
 ```swift
-func firstMethod() {
+func firstMethod()
+{
     // Explanation
-    if (a == b) {
+    if (a == b)
+    {
         // Do something
     }
 }
 
-func secondMethod() {
+func secondMethod()
+{
     // Do something
 }
 ```
@@ -156,7 +159,8 @@ func firstMethod() -> Bool {
 **Preferred:**
 
 ```swift
-override func viewDidLoad() {
+override func viewDidLoad()
+{
     super.viewDidLoad()
 
     self.title = "MyTitle"
@@ -166,7 +170,8 @@ override func viewDidLoad() {
 **Not Preferred:**
 
 ```swift
-override func viewDidLoad() {
+override func viewDidLoad()
+{
     super.viewDidLoad()
     self.title = "MyTitle"
 }
@@ -177,12 +182,14 @@ override func viewDidLoad() {
 **Preferred:**
 
 ```swift
-class Pilot {
+class Pilot
+{
 
     var name: String
 }
 
-struct Plane {
+struct Plane
+{
 
     var pilot: Pilot?
 }
@@ -191,11 +198,13 @@ struct Plane {
 **Not Preferred:**
 
 ```swift
-class Pilot {
+class Pilot
+{
     var name: String
 }
 
-struct Plane {
+struct Plane
+{
     var pilot: Pilot?
 }
 ```
@@ -214,10 +223,12 @@ A single whitespace must be use between elements:
 **Preferred:**
 
 ```swift
-func dummyFunction(number: Int) -> Int {
+func dummyFunction(number: Int) -> Int
+{
     var result = 0
 
-    if (number > 0) {
+    if (number > 0)
+    {
         result = (number * number)
     }
 
@@ -228,9 +239,11 @@ func dummyFunction(number: Int) -> Int {
 **Not Preferred:**
 
 ```swift
-func dummyFunction(number: Int)->Int {
+func dummyFunction(number: Int)->Int
+{
     var result = 0
-    if(number>0){
+    if(number>0)
+    {
         result = (number*number)
     }
     return result
@@ -251,7 +264,8 @@ For this very specific reason, one should always specify what's after the compar
 **Preferred:**
 
 ```swift
-if (finished == true) {
+if (finished == true)
+{
     // do something
 }
 ```
@@ -259,7 +273,8 @@ if (finished == true) {
 **Not Preferred:**
 
 ```swift
-if (finished) {
+if (finished)
+{
     // do something
 }
 ```
@@ -273,10 +288,13 @@ if (finished) {
 **Preferred:**
 
 ```swift
-if (user.isHappy == true) {
+if (user.isHappy == true)
+{
     // Do something
 
-} else {
+}
+else
+{
     // Do something else
 }
 ```
@@ -284,11 +302,9 @@ if (user.isHappy == true) {
 **Not Preferred:**
 
 ```swift
-if user.isHappy
-{
+if user.isHappy {
     // Do something
-}
-else {
+} else {
     // Do something else
 }
 ```
@@ -310,7 +326,8 @@ else {
 **Preferred:**
 
 ```swift
-class WidgetContainer {
+class WidgetContainer
+{
     var widgetButton                    : UIButton? = nil
     var secondLeftWidgetButton          : UIButton? = nil
     let widgetHeightPercentage          = 0.85
@@ -321,7 +338,8 @@ class WidgetContainer {
 **Not Preferred:**
 
 ```swift
-class app_widgetContainer {
+class app_widgetContainer
+{
     var wBut: UIButton? = nil
     var wBut2: UIButton? = nil
     let WHeightPCT = 0.85
@@ -336,14 +354,16 @@ When declaring a `struct` or `enum` within a scope or not **use UpperCamelCase**
 Use **lowerCamelCase** for the inner attributes.
 
 ```swift
-struct Database { // UpperCamelCase
+struct Database // UpperCamelCase
+{
 
-    struct Key { // UpperCamelCase
-
+    struct Key // UpperCamelCase
+    {
         static let identifier = "identifier" // lowerCamelCase
     }
 
-    enum Model { // UpperCamelCase
+    enum Model // UpperCamelCase
+    {
         case user // lowerCamelCase
     }
 }
@@ -419,7 +439,8 @@ func getUserState() -> UserState { ... }
 Use **lowerCamelCase** for static values within structures:
 
 ```swift
-struct Duration {
+struct Duration
+{
     static let fadeOut      = 0.3
     static let fadeIn       = 0.8
 
@@ -432,7 +453,8 @@ struct Duration {
 Use **lowerCamelCase** for enumeration values:
 
 ```swift
-enum Shape {
+enum Shape
+{
     case rectangle
     case square
     case triangle
@@ -444,7 +466,8 @@ Use a type to your enum _only and only if_ you need the `rawValue` in your code.
 Without this, prefer simple enumeration without type.
 
 ```swift
-enum UserState : Int {
+enum UserState : Int
+{
     case NotRegistered = 0
     case RegisteredWithoutEmail
     case RegisteredWithEmail
@@ -464,20 +487,24 @@ Enumerations and structures became amazing in Swift as they can now have (static
 This is extremely useful when you need data or logic depending on an enum value, for example a title of a segue or a list of (user) state.
 
 ```swift
-enum UserState : Int {
+enum UserState : Int
+{
     case NotRegistered = 0
     case RegisteredWithoutEmail
     case RegisteredWithEmail
 
-    func title() -> String {
-        switch self {
+    func title() -> String
+    {
+        switch self
+	{
         case .NotRegistered:            return L("user.pleaseRegister")
         case .RegisteredWithoutEmail:   return L("user.pleaseSpecifyEmail")
         case .RegisteredWithEmail:      return L("user.registrationComplete")
         }
     }
 
-    static func titleForId(id: Int) -> String? {
+    static func titleForId(id: Int) -> String?
+    {
         return UserState(rawValue: id)?.title()
     }
 }
@@ -493,8 +520,10 @@ It can be annoying to write multiple times the same case. But, next time a devel
 **Preferred:**
 
 ```swift
-static func isUserRegistered(user: UserState) -> Bool {
-    switch user {
+static func isUserRegistered(user: UserState) -> Bool
+{
+    switch user
+    {
     case .NotRegistered:                                  return false
     case .RegisteredWithoutEmail, .RegisteredWithEmail:   return true
     }
@@ -504,8 +533,10 @@ static func isUserRegistered(user: UserState) -> Bool {
 **Not Preferred:**
 
 ```swift
-static func isUserRegistered(user: UserState) -> Bool {
-    switch user {
+static func isUserRegistered(user: UserState) -> Bool
+{
+    switch user
+    {
     case .NotRegistered: return false
     default: return true
     }
@@ -530,7 +561,8 @@ var i: Int = 0
 var message: String? = nil
 var check = (true == false) // Comparison
  
-while (check == true) {
+while (check == true)
+{
     if (i >= 10) {  // if
         check = false
     } else if (i == 2) {
